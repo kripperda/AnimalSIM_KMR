@@ -1,0 +1,52 @@
+
+//Location class representing a point
+public class Location {
+
+	private int xCoord;
+	private int yCoord;
+	
+	public Location() {
+		xCoord = 0;
+		yCoord = 0;
+	}//empty-argument constructor
+	
+	public Location(int xCoord, int yCoord) throws InvalidCoordinateException {
+		if (xCoord<0 || yCoord<0) {
+			throw new InvalidCoordinateException("Coordinate cannot be negative");
+		}
+		this.xCoord = xCoord;
+		this.yCoord = yCoord;
+	}//preferred constructor
+	
+	public void update(int x, int y) throws InvalidCoordinateException {
+		if (x<0 || y<0) {
+			throw new InvalidCoordinateException("Coordinate cannot be negative");
+		}
+		xCoord = x;
+		xCoord = y;
+	}
+	
+	public Location(int[] temp) {
+        this.xCoord = temp[0];
+        this.yCoord = temp[1];
+	}
+
+    public int getX() {
+        return this.xCoord;
+    }
+    public void setX(int x) {
+        this.xCoord = x;
+    }
+
+    public int getY() {
+        return this.yCoord;
+    }
+    public void setY(int y) {
+        this.yCoord = y;
+    }
+	
+	public int[] getCoordinates() {
+		return new int[] {xCoord, yCoord};
+	}
+	
+}//end class
