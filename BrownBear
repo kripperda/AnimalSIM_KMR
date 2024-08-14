@@ -1,0 +1,116 @@
+//BrownBear class
+
+import java.util.Arrays;
+
+public class BrownBear implements Walkable, Swimmable {
+	public BrownBear(String string, int i, Location location, boolean b, boolean c) {
+		
+	}
+
+	enum Species {
+		Alaskan,
+		Asiatic,
+		European,
+		Grizzly,
+		Kodiak,
+		Siberian
+	}
+	
+	class InvalidSubspeciesException extends Exception {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public InvalidSubspeciesException() {
+		}
+	
+		private Species subSpecies;
+		private int simID;
+		private int[] location;
+		private boolean full;
+		private boolean rested;
+		
+		public void BrownBear() {
+			simID = 0;
+			location = new int[]{0,0};
+			full = false;
+			rested = true;
+			subSpecies = Species.Alaskan;
+		}//end empty-argument constructor
+	
+		public void BrownBear(String subSpecies, int simID, int[] location, boolean full, boolean rested) throws InvalidSubspeciesException {
+			try {
+				this.subSpecies = Species.valueOf(subSpecies);
+			} catch (Exception ex) {
+				throw new InvalidSubspeciesException();
+			}
+			this.simID = simID;
+			this.location = location;
+			this.full = full;
+			this.rested = rested;
+		}//end preferred constructor
+		
+		public Species getSubSpecies() {
+			return subSpecies;
+		}//end getSubSpecies
+		
+		public void setSubSpecies(Species subSpecies) {
+			this.subSpecies = subSpecies;
+		}//end setSubSpecies
+		
+		public int getSimID() {
+			return simID;
+		}//end getSimID
+		
+		public void setSimID(int simID) {
+			this.simID = simID;
+		}//end setSimID
+		
+		public int[] getLocation() {
+			return location;
+		}//end getLocation
+		
+		public void setLocation(int[] location) {
+			this.location = location;
+		}//end setLocation
+		
+		public boolean isFull() {
+			return full;
+		}//end isFull
+		
+		public void setFull(boolean full) {
+			this.full = full;
+		}//end setFull
+		
+		public boolean isRested() {
+			return rested;
+		}//end isRested
+		
+		public void setRested(boolean rested) {
+			this.rested = rested;
+		}//end setRested
+
+		@Override
+		public String toString() {
+			return "BrownBear [subSpecies=" + subSpecies + ", simID=" + simID + ", location="
+					+ Arrays.toString(location) + ", full=" + full + ", rested=" + rested + "]";
+		}//end toString
+			
+	}
+
+	@Override
+	public double walk(Location location) {
+		return 0;
+	}
+
+	@Override
+	public void walk(int direction) {
+	}
+
+	@Override
+	public double swim(Location location) {
+		return 0;		
+	}
+	
+}//end class
