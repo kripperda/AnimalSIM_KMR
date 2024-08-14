@@ -1,0 +1,104 @@
+import java.util.ArrayList;
+
+public class Application {
+
+	public static void main(String[] args) throws InvalidCoordinateException {
+		
+		System.out.println("Tests");
+		
+//*********************************************
+	      //Location Tests
+//*********************************************
+		Location location = new Location(new int[] {9,15});
+		//set location object
+	
+//*********************************************
+	    //Animal Tests
+//*********************************************
+		Animal animal1 = new Animal(1,location);
+		Animal animal2 = new Animal();
+		
+		System.out.println(animal1.getLocation().getX());
+		System.out.println(animal2.getLocation().getY());
+		animal1.setSimID(0); //trigger InvalidSimIDException
+		animal2.setSimID(10);
+		System.out.println(animal2.sleep());
+		System.out.println(animal1.eat());
+	
+//*********************************************
+	      //Goldfinch Tests
+//*********************************************
+
+		Goldfinch finch = new Goldfinch(0,new Location(10,10), 9.0);
+		System.out.println(finch.toString());
+		
+		double distanceWalk = finch.walk(new Location(9,6));
+		System.out.println("Goldfinch walked "+distanceWalk+ "units");
+		
+		double distanceFly = finch.fly(new Location(15,3));
+		System.out.println("Goldfinch flew "+distanceFly+ "units");
+		
+//*********************************************
+	       //BrownBear Tests
+//*********************************************
+		
+		BrownBear bb = new BrownBear("Alaskan",0,new Location(10,10),false,true);
+		System.out.println(bb.toString());
+		
+		double distance = bb.walk(new Location(45,18));
+		System.out.println("Brown Bear walked "+distance+ "units");
+		
+		double distanceSwim = bb.swim(new Location(9,8));
+		System.out.println("Brown Bear swam "+distanceSwim+ "units");
+		
+//*********************************************
+		//Generics Tests
+//*********************************************
+		//creating ArrayList of walkable objects
+		ArrayList<Walkable> walkables = new ArrayList<Walkable>();
+		
+		Location locWalk = new Location(20,20);
+		Location newLocWalk = new Location(45,67);
+		
+		//add objects to Walkable ArrayList
+		walkables.add(new BrownBear("Alaskan",0,new Location(10,10),false,true));
+		walkables.add(new BrownBear("Kodiak",0,new Location(1,1),true,true));
+		
+		for(Walkable w : walkables) {
+			distanceWalk = w.walk(new Location(1,1));
+			System.out.println(distanceWalk);
+		}//end for Walk
+		
+		//creating ArrayList of flyable objects
+		ArrayList<Flyable> flyables = new ArrayList<Flyable>();
+		
+		Location locFly = new Location(7,7);
+		Location newLocFly = new Location(9,9);
+		
+		//add objects to Walkable ArrayList
+	    flyables.add(new Goldfinch(0,new Location(6,2), 9.0));
+		flyables.add(new Goldfinch(0,new Location(4,9), 5.5));
+		
+		for(Flyable f : flyables) {
+			distanceFly = f.fly(new Location(1,1));
+			System.out.println(distanceFly);
+		}//end for Fly
+			
+		//creating ArrayList of swimmable objects
+		ArrayList<Swimmable> swimmables = new ArrayList<Swimmable>();
+		
+		Location locSwim = new Location(9,5);
+		Location newLocSwim = new Location(45,67);
+		
+		//add objects to Walkable ArrayList
+	    swimmables.add(new BrownBear("Alaskan",0,new Location(8,3),false,true));
+		swimmables.add(new BrownBear("Kodiak",2,new Location(9,5),true,true));
+
+		for(Swimmable s : swimmables) {
+			distanceSwim = s.swim(new Location(1,1));
+			System.out.println(distanceSwim);
+		}//end for Swim
+		
+	}//end main
+
+}//end class
