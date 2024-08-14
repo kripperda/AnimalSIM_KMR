@@ -1,0 +1,6 @@
+
+public interface Flyable {
+
+	public double fly(Location location);
+	
+}//end Flyable interface
