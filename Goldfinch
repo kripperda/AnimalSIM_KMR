@@ -1,0 +1,58 @@
+//Goldfinch class
+
+
+public class Goldfinch extends Animal implements Flyable, Walkable {
+	
+	private double wingSpan;
+	private int simID;
+	private int[] location;
+	private boolean full;
+	private boolean rested;
+	
+	public Goldfinch(int i, Location location2, double d) {
+		simID = 0;
+		location = new int[] {0,0};
+		full = false;
+		rested = true;
+		wingSpan = 9.0;
+	}//end empty-argument constructor
+	
+	public Goldfinch(int simID, int[] location2, double wingSpan) throws InvalidWingSpanException {
+		this.simID = simID;
+		this.location = location2;
+		this.full = full;
+		this.rested = rested;
+		this.wingSpan = wingSpan;
+	}//end preferred constructor
+	
+	public double getWingSpan() {
+		return wingSpan;
+	}//end getWingSpan
+	
+	public void setWingSpan(double wingSpan) throws InvalidWingSpanException {
+		if(wingSpan>=5 && wingSpan<=11)
+			this.wingSpan=wingSpan;
+		else
+			throw new InvalidWingSpanException("Error! Invalid WingSpan.");
+	}//end setWingSpan with exception
+
+	@Override
+	public String toString() {
+		return "Goldfinch [wingSpan=" + wingSpan + "]";
+	}
+
+	@Override
+	public void walk(int direction) {		
+	}
+
+	@Override
+	public double walk(Location location) {
+		return 0;
+	}
+
+	@Override
+	public double fly(Location location) {
+		return 0;
+	}
+	
+}//end class
