@@ -1,0 +1,18 @@
+
+//Invalid WingSpan Exception
+public class InvalidWingSpanException extends Exception {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final String str = null;
+	String message;
+	InvalidWingSpanException(String string) {
+		message = str;
+	}
+	public String toString() {
+		return ("InvalidWingSpanException Occurred: " + message);
+	}
+	
+}//end class
