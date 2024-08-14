@@ -1,0 +1,8 @@
+
+public interface Walkable {
+	
+	public void walk(int direction);
+
+	double walk(Location location);
+
+}//end Walkable interface
